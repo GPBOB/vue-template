@@ -1,20 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+const _import = require('./_import_' + process.env.NODE_ENV)
+
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
+        path: '/login',
+        name: 'login',
+        component: _import("login/login")
+    },
+    {
+        path: '/home',
         name: 'home',
-        component: Home
+        component: _import("Home")
     },
 ]
 
 const router = new VueRouter({
-    // mode: 'history',
-    base: process.env.BASE_URL,
     routes,
 // 路由跳转回到顶部
     scrollBehavior: () => {

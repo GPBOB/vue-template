@@ -1,15 +1,18 @@
 // const resolve = dir => path.join(__dirname, dir)
 
 module.exports = {
-    publicPath: "./",
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+    lintOnSave: true, // eslint-loader 是否在保存的时候检查
     chainWebpack: config => {
         config.resolve.alias
             .set('@', __dirname + "/src")
             .set('views', __dirname + "/src/views")
             .set('components', __dirname + "/src/components")
+        // 修复HMR
+        config.resolve.symlinks(true)
     },
     css: {
-        exact: true,
+        // exact: true,
         loaderOptions: {}
     },
     devServer: {
