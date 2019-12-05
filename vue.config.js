@@ -2,7 +2,7 @@
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-    lintOnSave: true, // eslint-loader 是否在保存的时候检查
+    lintOnSave: false, // eslint-loader 是否在保存的时候检查
     chainWebpack: config => {
         config.resolve.alias
             .set('@', __dirname + "/src")
@@ -18,13 +18,16 @@ module.exports = {
     devServer: {
         open: true,
         host: 'localhost',
-        port: '8080',
+        port: 8080,
         hotOnly: true,
+        https: false,
         proxy: {
             "/api": {
                 target: process.env.VUE_APP_API_URL,
-                pathRewrite: {"^/api": ""}
-            }
+                pathRewrite: {"^/api": ""},
+                changeOrigin: false,
+                ws: false,
+            },
         }
     }
 }
