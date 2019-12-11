@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 const baseRouters = baseRouter
 
 const router = new VueRouter({
-    routes:baseRouters,
+    routes: baseRouters,
 // 路由跳转回到顶部
     scrollBehavior: () => {
         // return 期望滚动到哪个的位置

@@ -29,7 +29,7 @@
                 this.doLogin(this.loginData).then(res => {
                     this.getUserInfo().then(response=>{
                         console.log(response)
-                        this.$store.dis
+                        // this.$store.dis
                     })
                 })
             }

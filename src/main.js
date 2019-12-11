@@ -6,6 +6,7 @@ import axios from 'axios'
 import VueAxios from "vue-axios";
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+import VueRouter from 'vue-router'
 import {getToken} from "./utils/auth";
 
 Vue.use(VueAxios, axios)
