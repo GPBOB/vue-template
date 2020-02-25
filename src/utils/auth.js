@@ -1,6 +1,6 @@
-import store from 'store'
+import store from './store'
 
-const TokenKey = 'user_Token'
+const TokenKey = 'supervise_Token'
 
 export function getToken() {
   return store.get(TokenKey)

@@ -1,3 +1,4 @@
 export default {
-    base_url: '/api'
+  base_url: '/api',
+  preview_url: '/preview',
 }

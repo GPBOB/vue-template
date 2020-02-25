@@ -1,22 +1,13 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import {baseRouter} from './common'
+import Vue from 'vue';
+import Router from 'vue-router';
+import { constRouterMap } from './commen';
+import { asyncRouter } from './modules';
 
-const _import = require('./_import_' + process.env.NODE_ENV)
+Vue.use(Router);
+export const constantRouterMap = constRouterMap;
+export const asyncRouterMapGetter = asyncRouter;
 
+export default new Router({
+  routes: constantRouterMap
+});
 
-Vue.use(VueRouter)
-
-const baseRouters = baseRouter
-
-const router = new VueRouter({
-    routes: baseRouters,
-// 路由跳转回到顶部
-    scrollBehavior: () => {
-        // return 期望滚动到哪个的位置
-        return {x: 0, y: 0}
-    }
-})
-
-
-export default router
