@@ -53,16 +53,17 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' });
     } else {
+      console.log(store.state.routerStore.isMountedRoute)
       if (store.state.routerStore.isMountedRoute) {
-        next('/');
+        next();
       } else {
-        console.log(111);
         store.dispatch('GenerateRoutes', 5).then(res => {
           // 重置路由表
           router.matcher = createRouter(res).matcher;
           // 生成可访问的路由表
-          router.options.routes.push(...res);
-          router.addRoutes(res); // 动态添加可访问路由表
+          router.options.routes[0].redirect=res[0].path
+          router.options.routes[0].children.push(...res);
+          // router.addRoutes(res); // 动态添加可访问路由表
           console.log(router);
           store.commit('setIsMountedRoute', true);
           next(); // hack方法 确保addRoutes已完成

@@ -2,6 +2,12 @@
 
 export const constRouterMap = [
   {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/home/home'),
+    children: []
+    },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/home/login')
