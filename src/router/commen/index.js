@@ -1,15 +1,19 @@
-// const _import = require('../_import_' + process.env.NODE_ENV);
+import Vue from "vue";
+import VueRouter from "vue-router";
+const _import = require("../_import_" + process.env.NODE_ENV);
 
-export const constRouterMap = [
+Vue.use(VueRouter);
+const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/home/home'),
-    children: []
-    },
+    path: "/login",
+    name: "login",
+    component: _import("commen/login")
+  },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/home/login')
+    path: "/404",
+    name: "404",
+    component: _import("commen/404")
   }
 ];
+
+export default routes;
